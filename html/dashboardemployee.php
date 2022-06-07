@@ -155,7 +155,7 @@ session_start();
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="approveAccount.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/Helpdesk/html/Employee/ListClient.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

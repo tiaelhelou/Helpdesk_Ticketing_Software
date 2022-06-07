@@ -238,6 +238,10 @@
               <h3 class="text-primary"><i class="fas fa-paint-brush"></i> <?php
                           echo  $_SESSION['client'][0];
                            ?></h3>
+            <form method="post" action="Employee/pdf.php">      
+              <button  type="submit" class="btn btn-primary mt-2 float-right "> Export</button>
+            </form>
+
               <p class="text-muted"></p>
               <br>
               <div class="text-muted">
@@ -251,11 +255,10 @@
                           echo  $_SESSION['client'][0];
                            ?></b>
                 </p>
-                <form id="form" action="">
-                  <textarea id="reason" name="reason" class="form-control mb-4 mt-3" placeholder="Enter reason for status change..."></textarea>
-
-                  <button onclick="closed()" type="submit" class="btn btn-success mt-2 float-right "> Close</button>
-                  <button onclick="blocked()" type="submit" class="btn btn-danger mt-2 float-left ">Block</button>
+                <form method="post" action="Employee/ChangeStatus.php">
+                <textarea id="reason" name="status_reason" class="form-control mb-4 mt-3" placeholder="Enter reason for status change..."></textarea>
+                  <button  type="submit" name = "status" value = "Closed" class="btn btn-success mt-2 float-right "> Close</button>
+                  <button  type="submit" name = "status" value = "Blocked" class="btn btn-danger mt-2 float-left ">Block</button>
                 </form>
               </div>
             </div>
@@ -269,17 +272,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <script>
-
-function blocked(){
-document.getElementById("form").action = "Employee/ChangeStatus.php" ;
-
-}
-function closed(){
-document.getElementById("form").action = "Employee/CloseOpenTicket.php";
-}
-</script>
   <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

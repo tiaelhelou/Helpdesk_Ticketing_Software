@@ -105,31 +105,31 @@
     
 
     <!-- Main content -->
-    <div class="content">
+    <section class="content">
 
       <!-- Default box -->
       <div class="card">
       <div class="card-header">
-            <button onclick="sort()" id = "sort" class="btn btn-dark btn-sm">
+           <form method="post" action="Client/SortOpenTickets.php">
+            <button   id = "sort" class="btn btn-dark btn-sm">
               <i class="fas fa-align-right">
               </i>
               Newest to Oldest
           </button>
+          </form>
 
-            <div class="card-tools"><!--search tool-->
-              
-            <div class="input-group input-group-sm" style="width: 200px;">
+          <p>
+            
 
-              <input type="text" id="search" onkeyup="search()" name="search" class="form-control float-right" placeholder="Search">
-              
-              <div class="input-group-append">
-                <btn class="btn btn-default">
-                  <i class="fas fa-search"></i><!--end of search tool-->
-                </btn>
-              </div>
-              
-            </div>
-          </div>
+          </p>
+
+             <form method="post" action="Client/ViewOpenTickets.php">
+            <button  id = "sort" class="btn btn-dark btn-sm">
+              <i class="fas fa-align-right">
+              </i>
+               Oldest to Newest
+          </button>
+          </form>
 
           </div><!--end of header-->
         <div class="card-body p-0">
@@ -155,7 +155,7 @@
 
 
                            <?php
-
+                            if($_SESSION['oall_ticket']!=0){
                             $count=Count($_SESSION['oall_ticket']);
                             $i=0;
 
@@ -191,7 +191,7 @@
                   </tr>
       
                       <?php
-                           $i=$i+3;}
+                           $i=$i+3;}}
                         ?>
 
               </tbody>

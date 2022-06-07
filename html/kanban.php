@@ -26,7 +26,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="dashboardemployee.html" class="nav-link">Home</a>
+        <a href="dashboardemployee.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -63,13 +63,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="listViewOpenEmployee.html" class="nav-link">
+                <a href="listViewOpenEmployee.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Open Tickets</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listViewAllEmployee.html" class="nav-link">
+                <a href="listViewAllEmployee.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Tickets</p>
                 </a>
@@ -77,13 +77,13 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="approveAccount.html" class="nav-link">
+            <a href="approveAccount.php" class="nav-link">
               <i class="nav-icon fas fa-thumbs-up"></i>
               <p>Approve Accounts</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="generateAccount.html" class="nav-link">
+            <a href="generateAccount.php" class="nav-link">
               <i class="nav-icon fas fa-plus"></i>
               <p>Generate Account</p>
             </a>
@@ -106,7 +106,7 @@
               </div>
               <div class="col-sm-6 d-none d-sm-block">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="dashboardemployee.php">Home</a></li>
                   <li class="breadcrumb-item active">Kanban Board</li>
                 </ol>
               </div>
@@ -123,15 +123,17 @@
                 <h3 class="card-title">
                   Open
                 </h3>
-              </div>
+                 </div>
+                
               <?php
+                           if($_SESSION['open_ticket']!=0){
                             $count=Count($_SESSION['open_ticket']);
                             $i=0;
 
                            while($i<$count){
                             ?>
 
-              <div class="card-body">
+              
                 <div class="card card-primary card-outline">
                   <div class="card-header">
                     <h5 class="card-title">
@@ -154,9 +156,9 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              
               <?php
-                                       $i=$i+2;}
+                                       $i=$i+2;}}
                                     ?>
             </div>
             <div class="card card-row card-default">
@@ -164,14 +166,15 @@
                 <h3 class="card-title">
                   Closed
                 </h3>
-              </div>
-              <?php
+                </div>
+             
+              <?php          if($_SESSION['close_ticket']!=0){
                             $count=Count($_SESSION['close_ticket']);
                             $i=0;
 
                            while($i<$count){
                             ?>
-              <div class="card-body">
+            
                 <div class="card card-primary card-outline">
                   <div class="card-header">
                     <h5 class="card-title">
@@ -194,9 +197,9 @@
                     </div>
                   </div>
                 </div>
-              </div>
+            
               <?php
-                                       $i=$i+2;}
+                                       $i=$i+2;}}
                                     ?>
             </div>
             <div class="card card-row card-danger">
@@ -205,13 +208,16 @@
                   Blocked
                 </h3>
               </div>
+            
+                
               <?php
+                             if($_SESSION['block_ticket']!=0){
                             $count=Count($_SESSION['block_ticket']);
                             $i=0;
 
                            while($i<$count){
                             ?>
-              <div class="card-body">
+              
                 <div class="card card-primary card-outline">
                   <div class="card-header">
                     <h5 class="card-title">
@@ -233,9 +239,9 @@
                     </div>
                   </div>
                 </div>
-              </div>
+             
               <?php
-                                       $i=$i+2;}
+                                       $i=$i+2;}}
                                     ?>
             </div>
           </div>

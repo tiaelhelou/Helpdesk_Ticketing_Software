@@ -156,9 +156,11 @@
               </tr>
             </thead>
             <tbody>
+              <form action="Employee/Approve.php" method="post">
 
 
                          <?php
+                         if ($_SESSION['client_info'] !=0){
                             $count=Count($_SESSION['client_info']);
                             $i=0;
 
@@ -188,25 +190,48 @@
                 </td>
 
                 <td class="project-actions text-center">
-                  <form action="Employee/Approve.php" method="post">
-                  <button type="submit" class="btn btn-success btn-sm mr-1" value = echo <?php echo  $_SESSION['client_info'][$i]; ?>>
+                  
+                  <button type="submit" class="btn btn-success btn-sm mr-1" name = "client_name"          value ="<?php echo  $_SESSION['client_info'][$i];?>">
                     <i class="fas fa-thumbs-up">
                     </i>
                     Approve
                   </button>
+
+                  <?php
+                                       $i=$i+3;}}
+                                    ?>
+
+
+
+
                   </form>
                   <form action="Employee/Deny.php" method="post">
-                  <button type="submit" class="btn btn-danger btn-sm"  value= echo <?php echo  $_SESSION['client_info'][$i]; ?>>
+
+
+                     <?php
+                             if ($_SESSION['client_info'] !=0){
+                            $count=Count($_SESSION['client_info']);
+                            $j=0;
+
+                           while($j<$count){
+                            ?>
+
+
+
+                  <button type="submit" class="btn btn-danger btn-sm" name = "client_name" value="<?php echo  $_SESSION['client_info'][$j];?>">
                     <i class="fas fa-thumbs-down">
                     </i>
                     Disapprove
                   </button>
+
+
+                        <?php
+                                       $j=$j+3;}}
+                                    ?>
                   </form>
 
 
-                  <?php
-                                       $i=$i+3;}
-                                    ?>
+                 
             </tbody>
           </table>
         </div>

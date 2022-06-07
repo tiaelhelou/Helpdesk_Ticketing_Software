@@ -107,31 +107,45 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="dashboardemployee.php">Home</a></li>
-                <li class="breadcrumb-item active"><a href="Helpdesk\html\Employee\KanbanFormat.php">Kanban Format</a></li>
+                <li class="breadcrumb-item active"><a href="Employee\KanbanFormat.php">Kanban Format</a></li>
               </ol>
             </div>
           </div>
         </div><!-- /.container-fluid -->
       </section>
   
-      <!-- Main content -->
-      <section class="content">
-  
-        <!-- Default box -->
-        <div class="card">
-        <div class="card-header">
-            <button onclick="sort()" id = "sort" class="btn btn-dark btn-sm">
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+      <div class="card-header">
+           <form method="post" action="Employee/SortAllTickets.php">
+            <button   id = "sort" class="btn btn-dark btn-sm">
               <i class="fas fa-align-right">
               </i>
               Newest to Oldest
           </button>
+          </form>
 
-            <div class="card-tools"><!--search tool-->
-              
+          <p>
+            
+
+          </p>
+
+             <form method="post" action="Employee/ViewAllTickets.php">
+            <button  id = "sort" class="btn btn-dark btn-sm">
+              <i class="fas fa-align-right">
+              </i>
+               Oldest to Newest
+          </button>
+          </form>
+
+          
+            <div class="card-tools"><!--search tool-->  
+            <form method="post" action="Employee/SearchTicket.php">          
             <div class="input-group input-group-sm" style="width: 200px;">
-
-              <input type="text" id="search" onkeyup="search()" name="search" class="form-control float-right" placeholder="Search">
-              
+              <input type="text" id="search"  name="search_keyword" class="form-control float-right" >
               <div class="input-group-append">
                 <btn class="btn btn-default">
                   <i class="fas fa-search"></i><!--end of search tool-->
@@ -140,6 +154,7 @@
               
             </div>
           </div>
+           </form>
 
           </div><!--end of header-->
           <div class="card-body p-0">
@@ -165,6 +180,7 @@
                   <form method="post" action="Employee/ViewSpecificTicket.php">
                 <tbody>
                            <?php
+                           if ($_SESSION['vall_ticket'] !=0){
                             $count=Count($_SESSION['vall_ticket']);
                             $i=0;
 
@@ -206,7 +222,7 @@
                     
                    
                                   <?php
-                                       $i=$i+3;}
+                                       $i=$i+3;}}
                                     ?>
 
 

@@ -121,9 +121,10 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">
+            
 
                          <?php
-                          echo  $_SESSION['client_name'];
+                          echo  $_SESSION['ticket_title'][0];
                            ?></h3>
 
           <div class="card-tools">
@@ -226,6 +227,9 @@
               <h3 class="text-primary"><i class="fas fa-paint-brush"></i> <?php
                           echo  $_SESSION['client_name'];
                            ?></h3>
+                             <form method="post" action="Client/pdf.php">      
+              <button  type="submit" class="btn btn-primary mt-2 float-right "> Export</button>
+            </form>
               <p class="text-muted"></p>
               <br>
               <div class="text-muted">
@@ -239,12 +243,10 @@
                           echo  $_SESSION['client_name'];
                            ?></b>
                 </p>
-                <form id="form" action="">
-                 
-
-                  <button onclick="cancel()" type="submit" value=" <?php echo $_SESSION['ticket_title'][1] ; ?>"
+                <form method="post" action="Client/CancelTicket.php">
+                  <button type="submit" name= "ticket_title" value="Canceled"
                   class="btn btn-success mt-2 float-right "> Cancel</button>
-                </form>
+                           </form>
               </div>
             </div>
           </div>
@@ -258,14 +260,14 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <script>
+  <!-- <script>
 
 
 
 function cancel(){
 document.getElementById("form").action = "Client/CancelTicket.php";
 }
-</script>
+</script> -->
   <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

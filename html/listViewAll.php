@@ -105,24 +105,38 @@
         </div><!-- /.container-fluid -->
       </section><!--end of header-->
   
-      <!-- Main content -->
-      <section class="content">
-  
-        <!-- Default box -->
-        <div class="card">
-        <div class="card-header">
-            <button onclick="sort()" id = "sort" class="btn btn-dark btn-sm">
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+      <div class="card-header">
+           <form method="post" action="Client/SortAllTickets.php">
+            <button   id = "sort" class="btn btn-dark btn-sm">
               <i class="fas fa-align-right">
               </i>
               Newest to Oldest
           </button>
+          </form>
+
+          <p>
+            
+
+          </p>
+
+             <form method="post" action="Client/ViewAllTickets.php">
+            <button  id = "sort" class="btn btn-dark btn-sm">
+              <i class="fas fa-align-right">
+              </i>
+               Oldest to Newest
+          </button>
+          </form>
+    
 
             <div class="card-tools"><!--search tool-->
-              
-            <div class="input-group input-group-sm" style="width: 200px;">
-
-              <input type="text" id="search" onkeyup="search()" name="search" class="form-control float-right" placeholder="Search">
-              
+            <form method="post" action="Client/SearchTicket.php">
+            <div class="input-group input-group-sm" style="width: 200px;">   
+              <input type="text" id="search"  name="search_keyword" class="form-control float-right" >
               <div class="input-group-append">
                 <btn class="btn btn-default">
                   <i class="fas fa-search"></i><!--end of search tool-->
@@ -131,6 +145,7 @@
               
             </div>
           </div>
+           </form>
 
           </div><!--end of header-->
           </div><!--end of header-->
@@ -154,6 +169,8 @@
                 <form method="post" action="Client/ViewSpecificTicket.php">
                 <tbody>
                              <?php
+
+                             if($_SESSION['vall_ticket']!=0){
                             $count=Count($_SESSION['vall_ticket']);
                             $i=0;
 
@@ -192,7 +209,7 @@
                         </td>
                     </tr>
                      <?php
-                           $i=$i+3;}
+                           $i=$i+3;}}
                         ?>
 
 

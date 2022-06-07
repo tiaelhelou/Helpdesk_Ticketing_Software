@@ -100,7 +100,7 @@
     <h1 class="ml-4">Generate Account</h1>
 
       <!-- form start -->
-      <form action="Client/Signup.php" method="post">
+      <form action="Employee/GenerateAccount.php" method="post">
 
       <div class="card card-primary ml-5 mr-5">
         <div class="card-header">
