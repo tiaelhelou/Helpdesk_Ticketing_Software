@@ -1,30 +1,42 @@
 <?php
 
 include('..\ConnecttoDb\my_db.php');
+session_start();
+$id = $_SESSION['ID'];
 
-$query = $mysqli->prepare("
-		  SELECT tickets.id_ticket, tickets.ticket_title
+$query =   "SELECT tickets.id_ticket, tickets.ticket_title
 		  FROM tickets
 		  INNER JOIN ticket_statuses
 		  ON tickets.id_ticket = ticket_statuses.tickets_id_ticket
 		  WHERE ticket_statuses.ticket_status = 'Open' 
-		  ORDER BY tickets.id_ticket ASC
-		 ;" );
-$query->execute();
-$ticket_result = $query->get_result();
-$row = mysqli_fetch_row($ticket_result);
+		  ORDER BY id_ticket ASC
+		 ";
+$ticket_result = $mysqli->query($query);
 
-
-if ($row != 0)
+if ($ticket_result->num_rows > 0)
 {
 	$ticket_info = [];
 
 	while($tickets = $ticket_result->fetch_assoc()){
-		$ticket_info = $tickets["tickets.id_ticket"];
-		$ticket_info = $tickets["tickets.ticket_title"];
-		
+		$ticket_info[] = $tickets["id_ticket"];
+		$ticket_info[]= $tickets["ticket_title"];
+		$ticket_info[] = 'Open'; 
 	}
-	$_SESSION['open_ticket']=$ticket_info;
+	$_SESSION['oall_ticket']=$ticket_info;
+	
+	header("Location:..\listViewOpenEmployee.php");
+	$var = json_encode($ticket_info);
+    echo $var;
 
+	
 }
+
+else{
+
+
+		$_SESSION['oall_ticket'] = 0;
+	header("Location:..\listViewOpenEmployee.php");}
+	
+
+
 ?>

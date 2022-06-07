@@ -26,7 +26,7 @@ $result2 = $query->get_result();
 
 if ($row1 == 0 and $type_row == 0){
 
-	echo "Nothing Foud! Please make sure you entered the right word";
+	echo "Nothing Found! Please make sure you entered the right word";
 }
 else{
 $ticket = [];

@@ -5,7 +5,7 @@ include('..\ConnecttoDb\my_db.php');
 session_start();
 $id = $_SESSION['ID'];
 
-$title = $_POST['ticket_title'];
+$title = $_SESSION['ticket_title'][0];
 
 $query = $mysqli->prepare("SELECT clients_id_client FROM tickets WHERE ticket_title = ?;");
 $query->bind_param('s',$title);

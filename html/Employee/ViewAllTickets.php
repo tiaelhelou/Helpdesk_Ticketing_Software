@@ -32,4 +32,11 @@ if ($ticket_result->num_rows > 0)
 	$_SESSION['vall_ticket']=$ticket_info;
 	header("Location:..\listViewAllEmployee.php");
 }
+
+else{
+
+
+		$_SESSION['vall_ticket'] = 0;
+	header("Location:..\listViewAllEmployee.php");}
+
 ?>

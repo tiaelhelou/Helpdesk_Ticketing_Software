@@ -4,11 +4,13 @@ include('..\ConnecttoDb\my_db.php');
 
 session_start();
 $id = $_SESSION['ID'];
-$ticket_title = $_SESSION['title'];
+//ticket_title = $_SESSION['title'];
 
 $title = $_POST['ticket_title'];
-$reason = $_POST['status_reason'];
+//$reason = $_POST['status_reason'];
 
+
+echo $title;
 $query = $mysqli->prepare("SELECT id_ticket FROM tickets WHERE ticket_title = ?;");
 $query->bind_param('s',$title);
 $query->execute();
@@ -25,6 +27,6 @@ $query = $mysqli->prepare("
 $query->bind_param('i',$ticket_id);
 $query->execute();
 
-header("Location:..\dashboardemployee.php");
+//header("Location:..\dashboardemployee.php");
 
 ?>

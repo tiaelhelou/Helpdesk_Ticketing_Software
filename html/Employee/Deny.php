@@ -16,8 +16,8 @@ $row = mysqli_fetch_row($id_result);
 $a_id = $row[0];
 
 
-$query = $mysqli->prepare("UPDATE account_statuses SET account_status = 'Deny', employees_id_employee = ? WHERE id_account = ?;");
-$query->bind_param('i',$a_id, $id );
+$query = $mysqli->prepare("UPDATE account_statuses SET account_status = 'Deny', employees_id_employee = ? WHERE id_account_status = ?;");
+$query->bind_param('ii',$id, $a_id );
 $query->execute();
 
 $query = $mysqli->prepare("SELECT client_email FROM clients WHERE client_name = ?;");
@@ -27,6 +27,8 @@ $email_result = $query->get_result();
 $row = mysqli_fetch_row($email_result);
 $email = $row[0];
 
-header("Location:..\approveAccount.html");
+$_SESSION['email'] = $email;
+
+header("Location: DenyMail.php");
 
 ?>
