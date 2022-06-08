@@ -2,6 +2,8 @@
 
 include('..\ConnecttoDb\my_db.php');
 
+session_start();
+
 $name = $_POST['client_name'];
 $email = $_POST['client_email'];
 $password = $_POST['client_password'];
@@ -15,15 +17,15 @@ if ( $password != $confirm_password) {
 }
 else {
 
-	$query = $mysqli->prepare("SELECT id_client FROM clients WHERE client_name = ? and client_email = ? ;");
-	$query->bind_param('ss',$name, $email);
+	$query = $mysqli->prepare("SELECT id_client FROM clients WHERE client_email = ? ;");
+	$query->bind_param('s',$email);
 	$query->execute();
 	$account_result = $query->get_result();
 	$row1 = mysqli_fetch_row($account_result);
 
 	if($account_result->num_rows != 0){
 
-		echo "You already have an account!";
+		echo "Email used";
 
 	}	
 	else{
@@ -54,7 +56,10 @@ else {
 
 		echo "Account created successfully";
 
-		header("Location:..\login.html");
+		$_SESSION['email'] = $email;
+
+
+		header("Location: VerifyMail.php");
 		
 	}
 

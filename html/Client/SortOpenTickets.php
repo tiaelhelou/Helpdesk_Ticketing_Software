@@ -23,9 +23,21 @@ if ($ticket_result->num_rows > 0)
 
 	while($tickets = $ticket_result->fetch_assoc()){
 		$ticket_info[] = $tickets["id_ticket"];
-		$ticket_info[] = $tickets["ticket_title"]; 
+		$ticket_info[] = $tickets["ticket_title"];
+		$ticket_info[] = 'Open'; 
 	}
-	$_SESSION['open_ticket']=$ticket_info;
-	
+	$_SESSION['oall_ticket']=$ticket_info;
+	header("Location:..\listViewOpen.php");
+	$var = json_encode($ticket_info);
+    echo $var;
+
 }
+
+
+else {
+	$_SESSION['oall_ticket']= 0;
+	header("Location:..\listViewOpen.php");
+}
+
+
 ?>

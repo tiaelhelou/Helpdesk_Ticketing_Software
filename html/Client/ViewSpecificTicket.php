@@ -110,13 +110,13 @@ while(count($ticket_e_reply) > $e_counter and count($ticket_c_reply) > $c_counte
 	if ($ticket_e_reply[$e_counter] < $ticket_c_reply[$c_counter]){
 		$replies[] = $ticket_e_reply[$e_counter + 1];
 		$users[] = 'Employee';
+		$e_counter += 2;
 	}
 	else if ($ticket_e_reply[$e_counter] > $ticket_c_reply[$c_counter]) {
 		$replies[] = $ticket_c_reply[$c_counter + 1];
 		$users[] = 'Client';
+		$c_counter += 2;
 	}
-	$c_counter += 2 ;
-	$e_counter += 2;
 }
 
 if (count($ticket_c_reply) > $c_counter) {

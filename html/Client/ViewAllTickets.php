@@ -33,6 +33,11 @@ if ($ticket_result->num_rows > 0)
 	header("Location:..\listViewAll.php");
 }
 
+else {
+	$_SESSION['vall_ticket']= 0;
+	header("Location:..\listViewAll.php");
+}
+
 ?>
 
 

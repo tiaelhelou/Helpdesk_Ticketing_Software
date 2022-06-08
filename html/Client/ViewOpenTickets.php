@@ -10,7 +10,7 @@ $query =  "
 		  FROM tickets
 		  INNER JOIN ticket_statuses
 		  ON tickets.id_ticket = ticket_statuses.tickets_id_ticket
-		  WHERE ticket_statuses.ticket_status = 'open' AND tickets.clients_id_client = $id
+		  WHERE ticket_statuses.ticket_status = 'Open' AND tickets.clients_id_client = $id
 		  ORDER BY tickets.id_ticket DESC
 		 ";
 
@@ -24,7 +24,7 @@ if ($ticket_result->num_rows > 0)
 	while($tickets = $ticket_result->fetch_assoc()){
 		$ticket_info[] = $tickets["id_ticket"];
 		$ticket_info[] = $tickets["ticket_title"];
-		$ticket_info[] = 'open'; 
+		$ticket_info[] = 'Open'; 
 	}
 	$_SESSION['oall_ticket']=$ticket_info;
 	header("Location:..\listViewOpen.php");
@@ -32,4 +32,12 @@ if ($ticket_result->num_rows > 0)
     echo $var;
 
 }
+
+
+else {
+	$_SESSION['oall_ticket']= 0;
+	header("Location:..\listViewOpen.php");
+}
+
+
 ?>

@@ -46,6 +46,6 @@ $query->execute();
 
 echo "created succefully";
 
-header("Location:..\createTicket.php");
+header("Location:SupportMail.php");
 
 ?>
