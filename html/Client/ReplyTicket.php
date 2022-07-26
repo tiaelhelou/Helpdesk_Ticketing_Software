@@ -30,15 +30,13 @@ $id_result = $query->get_result();
 $row = mysqli_fetch_row($id_result);
 $e_id = $row[0];
 
-if($c_id > $e_id ){
+if($c_id >= $e_id ){
 	$reply_id = $c_id +1;
 }
-else if($c_id < $e_id ){
+else if($c_id <= $e_id ){
 	$reply_id = $e_id +1;
 }
-else if ( $c_id== 0 and $e_id== 0 ){
-	$reply_id = 0;
-}
+
 
 
 
